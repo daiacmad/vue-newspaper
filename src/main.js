@@ -6,7 +6,7 @@ Vue.config.productionTip = false
 
 /* eslint-disable no-new */
 new Vue({
-  el: '#app',
+  el: '#newsPaper',
   router,
   render: h => h(App)
 })
