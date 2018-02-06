@@ -17,7 +17,9 @@
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
 
-      <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+      <button type="button" 
+        class="btn btn-primary btn-block btn-flat"
+        @click="onSignin()">Sign In</button>
     </div>
   </div>
 </template> 
