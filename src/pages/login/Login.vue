@@ -1,7 +1,7 @@
 <template>
   <div class="login-box">
     <div class="login-logo">
-      <a href="../../index2.html"><b>Admin</b> 2T Newspaper</a>
+      <a href="../../index2.html"><b>Admin</b> 2T Newspaper Vue Amazing</a>
     </div>
     <!-- /.login-logo -->
     <div class="login-box-body">
