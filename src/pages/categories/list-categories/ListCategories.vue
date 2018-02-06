@@ -1,6 +1,6 @@
 <template>
-	<div>
-		<router-view></router-view>
+	<div>list asdsad 
+		<button type="button" @click="onClickButton()">submit</button>
 	</div>
 </template>
 
