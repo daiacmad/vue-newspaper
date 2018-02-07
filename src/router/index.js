@@ -19,15 +19,17 @@ export default new Router({
       path: '/',
       name: 'MainPage',
       component:Main,
-      children:[{
-        path: 'categories',
-        component: Categories,
-        children:[
-          { path: 'list',component:ListCategories },
-          { path: 'create' , component : CreateCategories },
-          { path: 'detail/:id', component: DetailCategories }
-        ]
-      }]
+      children:[
+        {
+          path: 'categories',
+          component: Categories,
+          children:[
+            { path: 'list',component:ListCategories },
+            { path: 'create' , component : CreateCategories },
+            { path: 'detail/:id', component: DetailCategories }
+          ]
+        }
+      ]
     }
   ]
 })
