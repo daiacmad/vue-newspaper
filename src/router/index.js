@@ -9,16 +9,18 @@ import DetailCategories from '../pages/categories/detail-categories/DetailCatego
 
 Vue.use(Router)
 
-export default new Router({
+const router = new Router({
   routes: [
     { 				
       path: '/login',
       name: 'loginPage',
-      component: Login
+      component: Login,
+      beforeEnter:checkLogin
     },{
       path: '/',
       name: 'MainPage',
       component:Main,
+      beforeEnter:requireAuth,
       children:[
         {
           path: 'categories',
@@ -32,4 +34,16 @@ export default new Router({
       ]
     }
   ]
-})
+});
+
+function requireAuth(to, from, next){
+  var infoUser = JSON.parse(localStorage.getItem("infoUser") ) ;
+  (infoUser) ? next() : next("/login");
+};
+
+function checkLogin(to , from , next){
+  var infoUser = JSON.parse(localStorage.getItem("infoUser") ) ;
+  (infoUser) ? $(location).attr('href', '') : next();
+}
+
+export default router

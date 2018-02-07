@@ -1,9 +1,18 @@
-module.exports = {
-    data: () =>{
+import GlobalService from "../../components/services/global.service"
+
+const globalService = new GlobalService;
+
+const component = {
+    data:() => {
         return{
             onSignin: ()=> {
-                console.log("haha")
+                globalService.setAuth({
+                    access_token:"asdsadsad"
+                });
+                $(location).attr('href', '');
             }
         }
     }
 }
+
+export default component
