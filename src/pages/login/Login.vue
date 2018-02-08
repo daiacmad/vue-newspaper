@@ -6,28 +6,50 @@
         |  2T Newspaper
     div.login-box-body
       p.login-box-msg Sign in to start your session
+      div.callout(
+        style="margin-top:20px;" 
+        :class="{'callout-danger': message.status == 'error' , 'callout-success': message.status == 'success' }"
+        v-show="message.display"
+      )
+        h4(v-show="message.status == 'error' ") Error!
+        h4(v-show="message.status == 'success' ") Success!
+        p {{message.text}}
 
-      div.form-group.has-feedback
-        input.form-control( 
-          v-model="member.userName" 
-          type="email" 
-          placeholder="Email")
+      form(data-vv-scope="loginForm")
+        div.form-group.has-feedback( :class="{'has-error': errors.has('loginForm.userName') && fields.$loginForm.userName.dirty }")
+          input.form-control( 
+            v-model="member.userName" 
+            type="email" 
+            name="userName"
+            placeholder="Email"
+            v-validate="{ required: true, email: true }"
+            data-vv-as="user name"
+            :disabled="loading")
+          span.glyphicon.glyphicon-envelope.form-control-feedback
+          span.text-danger(v-show="errors.has('loginForm.userName') && fields.$loginForm.userName.dirty ") {{errors.first("loginForm.userName")}}
 
-        span.glyphicon.glyphicon-envelope.form-control-feedback
+        div.form-group.has-feedback( :class="{'has-error': errors.has('loginForm.password') && fields.$loginForm.password.dirty }")
+          input.form-control( 
+            v-model="member.password" 
+            type="password" 
+            name="password"
+            placeholder="Password"
+            v-validate="{required: true}"
+            :disabled="loading")
+          span.glyphicon.glyphicon-lock.form-control-feedback
+          span.text-danger(v-show="errors.has('loginForm.password')  && fields.$loginForm.password.dirty") {{errors.first("loginForm.password")}}
 
-      div.form-group.has-feedback
-        input( 
-          v-model="member.password" 
-          type="password" 
-          class="form-control" 
-          placeholder="Password")
+        button.btn.btn-primary.btn-block.btn-flat(
+          type="button"  
+          @click="onSignin()"
+          :disabled="errors.any('loginForm') || loading"
+          ) Sign In
+          i.fa.fa-refresh.fa-spin(
+            v-show="loading"
+            style="margin-left:5px"
+          )
 
-        span.glyphicon.glyphicon-lock.form-control-feedback
 
-      button.btn.btn-primary.btn-block.btn-flat(
-        type="button"  
-        @click="onSignin()") Sign In
-        
 </template> 
 
 <script src="./login.component.js"></script>

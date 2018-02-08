@@ -8,4 +8,19 @@ export default class GlobalService{
     removeAuth(){
         localStorage.removeItem("infoUser");
     }
+
+    success(text){
+        return {
+            status:"success",
+            display:true,
+            text: text
+        }
+    }
+    error(text){
+        return {
+            status:"error",
+            display:true,
+            text: text
+        }
+    }
 }
