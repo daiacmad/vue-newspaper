@@ -1,27 +1,33 @@
-<template>
-  <div class="login-box">
-    <div class="login-logo">
-      <a href="../../index2.html"><b>Admin</b> 2T Newspaper</a>
-    </div>
-    <!-- /.login-logo -->
-    <div class="login-box-body">
-      <p class="login-box-msg">Sign in to start your session</p>
+<template lang="pug">
+  div.login-box
+    div.login-logo
+      a(href="../../index2.html")
+        b Admin
+        |  2T Newspaper
+    div.login-box-body
+      p.login-box-msg Sign in to start your session
 
-      <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
-      </div>
+      div.form-group.has-feedback
+        input.form-control( 
+          v-model="member.userName" 
+          type="email" 
+          placeholder="Email")
 
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
+        span.glyphicon.glyphicon-envelope.form-control-feedback
 
-      <button type="button" 
-        class="btn btn-primary btn-block btn-flat"
-        @click="onSignin()">Sign In</button>
-    </div>
-  </div>
+      div.form-group.has-feedback
+        input( 
+          v-model="member.password" 
+          type="password" 
+          class="form-control" 
+          placeholder="Password")
+
+        span.glyphicon.glyphicon-lock.form-control-feedback
+
+      button.btn.btn-primary.btn-block.btn-flat(
+        type="button"  
+        @click="onSignin()") Sign In
+        
 </template> 
 
 <script src="./login.component.js"></script>
