@@ -19,6 +19,17 @@
                     <li><a href="#">Create</a></li>
                 </ul>
             </li>
+            <li class="treeview">
+                <a href="#"><i class="fa fa-tasks" aria-hidden="true"></i> <span>Articles</span>
+                    <span class="pull-right-container">
+                        <i class="fa fa-angle-left pull-right"></i>
+                    </span>
+                </a>
+                <ul class="treeview-menu">
+                    <li><router-link to="/articles/list">Listing</router-link></li>
+                    <li><router-link to="/articles/create">Create</router-link></li>
+                </ul>
+            </li>
         </ul>
         <!-- /.sidebar-menu -->
     </section>

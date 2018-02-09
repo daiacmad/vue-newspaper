@@ -3,7 +3,7 @@
     <header class="main-header">
 
         <!-- Logo -->
-        <a class="logo">
+        <router-link to='/' class="logo">
             <!-- mini logo for sidebar mini 50x50 pixels -->
             <span class="logo-mini">
                 <img src='../../assets/logo.png'/>
@@ -12,7 +12,7 @@
             <span class="logo-lg">
                 <img src='../../assets/logo.png' style="max-height:50px"/>
             </span>
-        </a>
+        </router-link>
 
         <!-- Header Navbar -->
         <nav class="navbar navbar-static-top" role="navigation">
