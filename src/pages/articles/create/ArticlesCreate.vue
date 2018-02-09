@@ -14,22 +14,38 @@
 				div.col-xs-12
 					div.box.box-primary
 
-						//- message
-						div.callout(
-							style="margin-top:20px;" 
-							:class="{'callout-danger': message.status == 'error' , 'callout-success': message.status == 'success' }"
-							v-show="message.display")
-							h4(v-show="message.status == 'error' ") Error!
-							h4(v-show="message.status == 'success' ") Success
-							p {{message.text}}
-
 						//- header
 						div.box-header.with-border
-							h4.pull-left List Articles
-							router-link.btn.btn-primary.pull-right(to="/articles/create") Create
+							h4.pull-left Create Articles
 
 						//- box content
 						div.box-body(style="padding-top:25px")
+							//- message
+							div.callout(
+								style="margin-top:20px;" 
+								:class="{'callout-danger': message.status == 'error' , 'callout-success': message.status == 'success' }"
+								v-show="message.display")
+								h4(v-show="message.status == 'error' ") Error!
+								h4(v-show="message.status == 'success' ") Success
+								p {{message.text}}
+
+							//- content
+							div.row
+								div.col-xs-12.col-sm-4
+									img(:src="config.pathUrlAssets" style="max-width:150px;margin-left:auto;margin-right:auto")
+								div.col-xs-12.col-sm-8
+									div.form-group
+										label Slug
+										input.form-control(type="text" placeholder="Enter Title...")
+									div.form-group
+										label Title
+										input.form-control(type="text" placeholder="Enter Title...")
+							div.row
+								div.col-xs-12
+									div.form-group
+										label Content
+										Ckeditor
+
 
 </template>
 
