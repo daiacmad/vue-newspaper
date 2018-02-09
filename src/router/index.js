@@ -31,6 +31,7 @@ const router = new Router({
         {
           path: 'categories',
           component: Categories,
+          redirect:'categories/list',
           children:[
             { path: 'list',component:ListCategories },
             { path: 'create' , component : CreateCategories },
@@ -39,6 +40,7 @@ const router = new Router({
         },{
           path: 'articles',
           component:Articles,
+          redirect:'articles/list',
           children:[
             { path: 'list' , component: ArticlesList },
             { path: 'create' , component: ArticlesCreate },
@@ -46,6 +48,9 @@ const router = new Router({
           ]
         }
       ]
+    },{
+      path: '/*',
+      redirect:'/'
     }
   ]
 });
