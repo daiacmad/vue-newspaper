@@ -13,4 +13,16 @@ export default class ApiService{
             callback(error);
         });
     }
+
+    //----------------------articles
+    getListArticles(callback){
+        axios({
+            method: "get",
+            url: config.pathUrlApi + "/articles/list"
+        }).then(res =>{
+            callback(res.data);
+        }).catch(error =>{
+            callback(error.response)
+        })
+    }
 }
