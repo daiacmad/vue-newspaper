@@ -45,6 +45,10 @@
 									div.form-group
 										label Content
 										Ckeditor
+							
+						div.box-footer
+							button.btn.btn-primary(type="button") Create
+							router-link(to="/articles/list").btn.btn-danger.pull-right Cancel
 
 
 </template>

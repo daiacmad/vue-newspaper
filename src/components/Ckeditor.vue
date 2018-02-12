@@ -11,7 +11,6 @@
 </template>
 
 <script>
-
 let inc = new Date().getTime();
 export default {
   name: 'vue-ckeditor',
@@ -33,7 +32,11 @@ export default {
     },
     config: {
       type: Object,
-      default: () => {}
+      default: () => {
+        return {
+          extraPlugins: 'divarea'
+        }
+      }
     }
   },
   data () {
@@ -89,7 +92,9 @@ export default {
       if (!this.destroyed) {
         this.instance.focusManager.blur(true)
         this.instance.removeAllListeners()
-        this.instance.destroy()
+        setTimeout(()=>{
+          this.instance.destroy()
+        },0)
         this.destroyed = true
       }
     },
