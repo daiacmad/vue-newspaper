@@ -30,7 +30,7 @@ const component = {
               return;
             }
             var data = new FormData();
-            data.append('photo', files[0]);
+            data.append('uploadfile', files[0]);
 
             console.log(data);
 
