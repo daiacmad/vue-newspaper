@@ -33,6 +33,7 @@
 							div.row
 								div.col-xs-12.col-sm-4
 									img(:src="config.pathUrlAssets" style="max-width:150px;margin-left:auto;margin-right:auto")
+									input(type="file" @change="uploadImage" name="poster")
 								div.col-xs-12.col-sm-8
 									div.form-group
 										label Slug

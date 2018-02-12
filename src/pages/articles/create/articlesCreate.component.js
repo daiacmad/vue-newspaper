@@ -24,7 +24,27 @@ const component = {
         // console.log(1);
     },
     methods:{
-        
+        uploadImage: function(e) {
+            var files = e.target.files;
+            if(!files[0]) {
+              return;
+            }
+            var data = new FormData();
+            data.append('photo', files[0]);
+
+            console.log(data);
+
+
+            apiService.uploadSingleFile(data , res =>{
+                console.log(res);
+            })
+            // var reader = new FileReader();
+            // reader.onload = (e) => {
+            //   this.imageSrc = e.target.result;
+            //   console.log(this.imageSrc);
+            // };
+            // reader.readAsDataURL(files[0]);
+        }
     },
     components:{
         Ckeditor

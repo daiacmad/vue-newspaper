@@ -25,4 +25,18 @@ export default class ApiService{
             callback(error.response)
         })
     }
+
+
+    //------------------------upload file
+    uploadSingleFile(param, callback){
+        axios({
+            method:"post",
+            url:config.pathUrlApi + "/uploads",
+            data: param
+        }).then(res =>{
+            callback(res.data);
+        }).catch(error =>{
+            callback(error.response)
+        })
+    }
 }
