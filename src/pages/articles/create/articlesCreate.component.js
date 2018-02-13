@@ -16,6 +16,14 @@ const component = {
                 status:"success",
                 display:false,
                 text:""
+            },
+
+            //article
+            articles:{
+                slug:"",
+                title:"",
+                content:"",
+                poster:""
             }
 
         }
@@ -25,6 +33,7 @@ const component = {
     },
     methods:{
         uploadImage: function(e) {
+            let $this = this;
             var files = e.target.files;
             if(!files[0]) {
               return;
@@ -35,7 +44,8 @@ const component = {
             console.log(data);
 
 
-            apiService.uploadSingleFile(data , res =>{
+            apiService.uploadSingleFile(data , (res) =>{
+                this.articles.poster =config.pathUrlAssets+ res.url;
                 console.log(res);
             })
             // var reader = new FileReader();

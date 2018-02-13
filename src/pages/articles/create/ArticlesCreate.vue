@@ -30,10 +30,15 @@
 								p {{message.text}}
 
 							//- content
-							div.row
+							div.row(style="margin-bottom:15px")
 								div.col-xs-12.col-sm-4
-									img(:src="config.pathUrlAssets" style="max-width:150px;margin-left:auto;margin-right:auto")
-									input(type="file" @change="uploadImage" name="poster")
+									div(style="height:150px;margin-bottom:15px;position:relative;background:#ddd")
+										img(:src="articles.poster" 
+											style="position:absolute;top:50%;left:50%;max-width:100%;max-height:100%;transform:translate(-50%,-50%)")
+									div
+										label.btn.btn-primary(for="poster") Upload
+										button.btn.btn-danger.pull-right(type="button" @click="articles.poster = '' ") Cancel
+									input(type="file" @change="uploadImage" name="poster" id="poster" style="display:none")
 								div.col-xs-12.col-sm-8
 									div.form-group
 										label Slug
