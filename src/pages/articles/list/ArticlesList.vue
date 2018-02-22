@@ -31,33 +31,41 @@
 						//- box content
 						div.box-body(style="padding-top:25px")
 
-							//- table list
-							table.table.table-striped.table-border
-								thead
-									tr
-										th Thumbnail
-										th Title
-										th Categories
-										th Tags
-										th Created At
-										th
-								tbody
-									tr(v-for="article in listArticles")
-										td(style="width:1%") 
-											img(:src="article.thumbnail" style="max-width:100px")
+							PrimaryTable(
+								:TotalPage= "pagination.TotalPage"
+								:CurrentPage= "pagination.CurrentPage"
 
-										td {{article.title}}
+								:pathUrl =  " '/articles/list' "
 
-										td 
-											div(v-for="category in article.categories") {{category}}
+								:TotalItem="listArticles.length"
+								:ItemToShow="itemToShow"
+								@update:CurrentPage = "onPrimaryTableChangePage"
+							)
+								tr(slot="thead")
+									th Thumbnail
+									th Title
+									th Categories
+									th Tags
+									th Created At
+									th
+								tr(slot="tbody" v-for="article in listArticles")
+									td(style="width:1%") 
+										img(:src="article.thumbnail" style="max-width:100px")
 
-										td 
-											div(v-for="tag in article.tags") {{tag}}
+									td {{article.title}}
 
-										td {{article.createdAt}}
-										
-										td(style="width:1%") 
-											router-link.btn.btn-primary(:to="{path: '/articles/detail/' +  article._id }" ) Detail
+									td 
+										div(v-for="category in article.categories") {{category}}
+
+									td 
+										div(v-for="tag in article.tags") {{tag}}
+
+									td {{article.createdAt}}
+									
+									td(style="width:1%") 
+										router-link.btn.btn-primary(:to="{path: '/articles/detail/' +  article._id }" ) Detail
+
+								
 </template>
 
 <script src="./articlesList.component.js"></script>
