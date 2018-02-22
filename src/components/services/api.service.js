@@ -25,6 +25,17 @@ export default class ApiService{
             callback(error.response)
         })
     }
+    createArticle(param , callback){
+        axios({
+            method: "post",
+            url: config.pathUrlApi + "/articles/create",
+            data: param
+        }).then(res =>{
+            callback(res.data);
+        }).catch(error =>{
+            callback(error.response)
+        })
+    }
 
 
     //------------------------upload file

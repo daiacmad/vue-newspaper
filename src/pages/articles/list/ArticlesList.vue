@@ -43,8 +43,8 @@
 										th
 								tbody
 									tr(v-for="article in listArticles")
-										td 
-											img(:src="'http://localhost:8000' +article.thumbnail" style="max-width:50px")
+										td(style="width:1%") 
+											img(:src="article.thumbnail" style="max-width:100px")
 
 										td {{article.title}}
 

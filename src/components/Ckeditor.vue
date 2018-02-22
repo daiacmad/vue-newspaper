@@ -1,13 +1,11 @@
-<template>
-  <div class="ckeditor">
-    <textarea
+<template lang="pug">
+  div.ckeditor
+    textarea(
       :name="name"
       :id="id"
       :value="value"
       :types="types"
-      :config="config">
-    </textarea>
-  </div>
+      :config="config")
 </template>
 
 <script>

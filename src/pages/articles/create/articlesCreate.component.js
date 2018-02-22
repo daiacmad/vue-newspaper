@@ -23,13 +23,12 @@ const component = {
                 slug:"",
                 title:"",
                 content:"",
-                poster:""
+                thumbnail:""
             }
 
         }
     },
     mounted(){
-        // console.log(1);
     },
     methods:{
         uploadImage: function(e) {
@@ -41,19 +40,29 @@ const component = {
             var data = new FormData();
             data.append('uploadfile', files[0]);
 
-            console.log(data);
-
 
             apiService.uploadSingleFile(data , (res) =>{
-                this.articles.poster =config.pathUrlAssets+ res.url;
-                console.log(res);
-            })
-            // var reader = new FileReader();
-            // reader.onload = (e) => {
-            //   this.imageSrc = e.target.result;
-            //   console.log(this.imageSrc);
-            // };
-            // reader.readAsDataURL(files[0]);
+                this.articles.thumbnail =config.pathUrlAssets+ res.url;
+            });
+        },
+        onCancelUploadThumbnail: function(){
+            this.articles.thumbnail = '' ;
+            $("#thumbnail").val('');
+        },
+        onValidateForm: function(){
+            this.message.display = false;
+            this.$validator.validateAll('articleForm').then(result => {
+                (result) ? this.onCreateUpdate() : false;
+           });
+        },
+        onCreateUpdate: function(){
+            apiService.createArticle(this.articles , res =>{
+                if(res.ok){
+                    this.message = globalService.success("Create Article successfully");
+                }else{
+                    this.message = globalService.error(res.data.message);
+                }
+            });
         }
     },
     components:{
