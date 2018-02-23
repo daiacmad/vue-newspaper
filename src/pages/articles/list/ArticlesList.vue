@@ -37,7 +37,7 @@
 
 								:pathUrl =  " '/articles/list' "
 
-								:TotalItem="listArticles.length"
+								:TotalItem="totalItem"
 								:ItemToShow="itemToShow"
 								@update:CurrentPage = "onPrimaryTableChangePage"
 							)

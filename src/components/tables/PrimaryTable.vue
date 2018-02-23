@@ -8,7 +8,10 @@
                 
         div.row
             div.col-sm-5
-                div.dataTables_info Showing {{ItemToShow * (CurrentPage - 1) + 1}} to {{ItemToShow * CurrentPage}} of {{TotalItem}} entries
+                div.dataTables_info 
+                    | Showing {{ItemToShow * (CurrentPage - 1) + 1}} to 
+                    | {{ (ItemToShow * CurrentPage <= TotalItem) ?  (ItemToShow * CurrentPage) : TotalItem}} 
+                    | of {{TotalItem}} entries
             div.col-sm-7
                 div.dataTables_paginate.paging_simple_numbers(style="text-align:right")
                     ul.pagination(style="margin-top:0;margin-bottom:0")

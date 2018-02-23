@@ -22,7 +22,8 @@ const component = {
                 TotalPage: 0,
                 CurrentPage:1
             },
-            itemToShow:3
+            itemToShow:3,
+            totalItem:0
 
         }
     },
@@ -36,6 +37,7 @@ const component = {
                 }
                 
                 this.listArticles = res.data;
+                this.totalItem = res.TotalItem;
 
                 //pass Total page to child component table
                 this.pagination.TotalPage = Math.ceil( res.TotalItem / this.itemToShow );
