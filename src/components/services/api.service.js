@@ -15,10 +15,10 @@ export default class ApiService{
     }
 
     //----------------------articles
-    getListArticles(callback){
+    getListArticles(page , itemPerPage , callback){
         axios({
             method: "get",
-            url: config.pathUrlApi + "/articles/list"
+            url: config.pathUrlApi + "/articles/list?page=" + page + "&itemPerPage=" + itemPerPage
         }).then(res =>{
             callback(res.data);
         }).catch(error =>{

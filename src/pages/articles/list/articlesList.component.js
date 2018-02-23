@@ -27,21 +27,23 @@ const component = {
         }
     },
     created(){
-        this.fetchListArticle();
     },
     methods:{
         fetchListArticle(){
-            apiService.getListArticles(res =>{
-                if(res.status && res.status != 200){
-                    return this.message = globalService.error("Cannot fetch data!");
+            apiService.getListArticles(this.pagination.CurrentPage , this.itemToShow , res =>{
+                if(!res.ok){
+                    return this.message = globalService.error(res.data.message);
                 }
                 
-                this.listArticles = res;
-                this.pagination.TotalPage = Math.ceil( this.listArticles.length / this.itemToShow );
+                this.listArticles = res.data;
+
+                //pass Total page to child component table
+                this.pagination.TotalPage = Math.ceil( res.TotalItem / this.itemToShow );
             })
         },
         onPrimaryTableChangePage(data){
             this.pagination.CurrentPage = data;
+            this.fetchListArticle();
         }
     },
     components:{

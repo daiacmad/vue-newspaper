@@ -13,14 +13,16 @@
                 div.dataTables_paginate.paging_simple_numbers(style="text-align:right")
                     ul.pagination(style="margin-top:0;margin-bottom:0")
                         li.paginate_button.previous(:class="{disabled: CurrentPage <= 1 }" )
-                            a(href="#") Previous
+                            a(href="#"
+                                @click="onChangePage(CurrentPage - 1)") Previous
                         li.paginate_button(
                             v-for="numberPage in TotalPage" 
                             :class="{active: numberPage == CurrentPage }")
                             a(style="cursor:pointer"
                                 @click="onChangePage(numberPage)") {{numberPage}}
                         li.paginate_button.next(:class="{disabled: CurrentPage >=  TotalPage}" )
-                            a(href="#") Next
+                            a(href="#"
+                                @click="onChangePage(CurrentPage + 1)") Next
                         
 </template>
 

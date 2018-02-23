@@ -19,7 +19,12 @@ const component = {
         return {};
     },
     created(){
-        this.$emit("update:CurrentPage" , parseInt(this.$route.query.page) );
+        if(!parseInt(this.$route.query.page)){
+            this.$emit("update:CurrentPage" , 1 );
+            router.push({path: this.pathUrl, query: { page : 1 }} );
+        }else{
+            this.$emit("update:CurrentPage" , parseInt(this.$route.query.page) );
+        }
     },
     watch:{
         CurrentPage: function(val){
